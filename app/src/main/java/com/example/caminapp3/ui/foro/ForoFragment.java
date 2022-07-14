@@ -63,13 +63,16 @@ public class ForoFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Intent nuevaActivity = new Intent(getContext(),RegistroUsuario.class);
+                MainActivity mainActivity = ((MainActivity) getActivity());
+                mainActivity.changeFragment(R.id.nav_host_fragment_content_main,new DesccomentFragment(),"replacement");
+                //mainActivity.detachFragment();
+                /* nuevaActivity = new Intent(getContext(),RegistroUsuario.class);
                 startActivity(nuevaActivity);
-                Log.d("Pruebas","Click de la posición " + position);
+                Log.d("Pruebas","Click de la posición " + position);*/
 
                 //((MainActivity) getActivity()).getBinding().setContentView(R.layout.fragment_foro);
 
-                DesccomentFragment fragmento = new DesccomentFragment();
+                /*DesccomentFragment fragmento = new DesccomentFragment();
                 Fragment fprueba4 = getChildFragmentManager().findFragmentById(R.id.cl_1);
                 FragmentManager fm3 = getActivity().getSupportFragmentManager();
                 Fragment fprueba3 = fm3.findFragmentById(R.id.cl_1);
@@ -80,7 +83,7 @@ public class ForoFragment extends Fragment {
                 FragmentTransaction ft = fm.beginTransaction();
 
                 ft.replace(R.id.cl_1,fragmento);
-                ft.commit();
+                ft.commit();*/
 
             }
         });

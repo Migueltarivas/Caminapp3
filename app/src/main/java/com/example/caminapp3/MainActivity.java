@@ -1,7 +1,6 @@
 package com.example.caminapp3;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
@@ -20,6 +19,7 @@ import com.example.caminapp3.ui.registroUsuario.RegistroUsuario;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -72,8 +72,6 @@ public class MainActivity extends AppCompatActivity {
 
         //***********************************CODIGO PERSONALIZADO***********************************
         FuncionesDB.CrearDB(this);
-        FragmentManager fm = getFragmentManager();
-        Fragment prueba = fm.findFragmentById(R.id.nav_foro);
 
 
     }
@@ -93,6 +91,16 @@ public class MainActivity extends AppCompatActivity {
 
     public ActivityMainBinding getBinding(){
         return binding;
+    }
+
+    public void changeFragment(int containerViewId, Fragment fragment, String key){
+        androidx.fragment.app.FragmentManager supporFragmentManager = getSupportFragmentManager();
+        supporFragmentManager.getPrimaryNavigationFragment().getChildFragmentManager()
+                .beginTransaction()
+                .replace(R.id.nav_host_fragment_content_main,fragment)
+                .setReorderingAllowed(false)
+                .commitNow();
+
     }
 }
 
